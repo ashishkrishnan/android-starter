@@ -88,7 +88,6 @@ abstract class MviFragment<T : Parcelable> : Fragment() {
         .toObservable()
 
     disposables += bind(statesObservable)
-        .subscribeOn(Schedulers.io()) // TODO(gs) - Evaluate.
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe {
           stateRelay.accept(it)

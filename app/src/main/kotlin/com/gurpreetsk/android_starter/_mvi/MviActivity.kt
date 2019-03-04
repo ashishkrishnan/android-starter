@@ -84,7 +84,6 @@ abstract class MviActivity<T : Parcelable> : AppCompatActivity() {
         .toObservable()
 
     disposables += bind(statesObservable)
-        .subscribeOn(Schedulers.io()) // TODO(gs) - Evaluate.
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe {
           stateRelay.accept(it)
